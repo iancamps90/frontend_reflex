@@ -5,47 +5,5 @@
       "src": "**/*",
       "use": "@vercel/static"
     }
-  ],
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "headers": {
-        "Content-Type": "application/javascript"
-      }
-    },
-    {
-      "src": "/(.*\\.js)",
-      "headers": {
-        "Content-Type": "application/javascript"
-      }
-    },
-    {
-      "src": "/(.*\\.css)",
-      "headers": {
-        "Content-Type": "text/css"
-      }
-    },
-    {
-      "src": "/(.*\\.png)",
-      "headers": {
-        "Content-Type": "image/png"
-      }
-    },
-    {
-      "src": "/(.*\\.jpg)",
-      "headers": {
-        "Content-Type": "image/jpeg"
-      }
-    },
-    {
-      "src": "/(.*\\.ico)",
-      "headers": {
-        "Content-Type": "image/x-icon"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
   ]
 }
