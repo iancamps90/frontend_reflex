@@ -1,0 +1,930 @@
+/* Shanghai Advent Journey - Estilos Responsive y Modernos */
+
+/* Reset y base */
+* {
+    box-sizing: border-box;
+}
+
+/* Variables CSS para colores navideños y chinos */
+:root {
+    --primary-red: #DC143C;
+    --primary-gold: #FFD700;
+    --primary-dark: #1a1a1a;
+    --primary-light: #FFF8DC;
+    --secondary-bg: #2a2a2a;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666;
+    --shadow-light: rgba(255, 215, 0, 0.3);
+    --shadow-red: rgba(220, 20, 60, 0.3);
+    
+    /* Colores navideños */
+    --christmas-red: #B22222;
+    --christmas-green: #228B22;
+    --christmas-gold: #FFD700;
+    --christmas-silver: #C0C0C0;
+    --christmas-white: #FFFFFF;
+    
+    /* Colores chinos tradicionales */
+    --chinese-red: #DC143C;
+    --chinese-gold: #FFD700;
+    --chinese-black: #000000;
+    --chinese-white: #FFFFFF;
+    --chinese-blue: #4169E1;
+}
+
+/* Animaciones principales */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px var(--primary-gold); }
+    50% { box-shadow: 0 0 20px var(--primary-gold), 0 0 30px var(--primary-gold); }
+}
+
+@keyframes pulse-red {
+    0%, 100% { box-shadow: 0 0 5px var(--primary-red); }
+    50% { box-shadow: 0 0 15px var(--primary-red), 0 0 25px var(--primary-red); }
+}
+
+/* Animaciones navideñas */
+@keyframes christmas-twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes snow-fall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes chinese-lantern {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(1deg); }
+    75% { transform: translateY(5px) rotate(-1deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dayGlow {
+    0% { 
+        box-shadow: 0 6px 12px var(--shadow-red);
+        border-color: var(--primary-gold);
+    }
+    100% { 
+        box-shadow: 0 8px 16px var(--shadow-red), 0 0 20px var(--shadow-light);
+        border-color: var(--primary-red);
+    }
+}
+
+@keyframes availablePulse {
+    0%, 100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+}
+
+/* Estilos base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(220, 20, 60, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 25%, #1a1a1a 50%, #2a2a2a 75%, #1a1a1a 100%);
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Efecto de copos de nieve mejorado */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 200px 20px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(2px 2px at 250px 60px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 300px 10px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(2px 2px at 350px 50px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1px 1px at 400px 80px, rgba(255, 255, 255, 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 450px 120px;
+    animation: snow-fall 15s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Capa adicional de nieve */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 50px 50px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 150px 100px, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 250px 30px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1px 1px at 350px 70px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 450px 20px, rgba(255, 255, 255, 0.2), transparent);
+    background-repeat: repeat;
+    background-size: 500px 150px;
+    animation: snow-fall 25s linear infinite reverse;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Contenedor principal responsive */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Grid del calendario responsive */
+.calendar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para las casillas del calendario */
+.day-card {
+    width: 100%;
+    aspect-ratio: 1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 3px solid var(--chinese-gold);
+    background: linear-gradient(135deg, var(--chinese-gold) 0%, var(--chinese-red) 100%);
+    box-shadow: 
+        0 6px 12px var(--shadow-red),
+        0 0 20px rgba(255, 215, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    min-height: 120px;
+    max-height: 150px;
+    z-index: 2;
+}
+
+.day-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--shadow-light), transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+}
+
+.day-card:hover::before {
+    left: 100%;
+}
+
+.day-card.available {
+    animation: dayGlow 4s ease-in-out infinite alternate, christmas-twinkle 2s ease-in-out infinite;
+    border: 3px solid var(--chinese-gold);
+    box-shadow: 
+        0 6px 12px var(--shadow-red),
+        0 0 30px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(220, 20, 60, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.day-card.available:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px var(--shadow-red), 0 0 20px var(--shadow-light);
+}
+
+.day-card.locked {
+    filter: grayscale(100%) brightness(0.7);
+    cursor: not-allowed;
+    border-color: var(--secondary-bg);
+    background: var(--secondary-bg);
+    opacity: 0.6;
+}
+
+.day-card.locked:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Imágenes del calendario */
+.day-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.day-image:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) contrast(1.2) saturate(1.3);
+}
+
+.day-image-locked {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0.4;
+    filter: grayscale(100%) brightness(0.7);
+}
+
+/* Números de los días */
+.day-number {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--primary-red);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    z-index: 2;
+}
+
+.day-number.locked {
+    background: var(--secondary-bg);
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* Iconos de estado */
+.day-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 1.2em;
+    opacity: 0.9;
+    z-index: 2;
+    animation: christmas-twinkle 1.5s ease-in-out infinite;
+    text-shadow: 0 0 10px var(--chinese-gold);
+}
+
+.day-icon.locked {
+    opacity: 0.7;
+}
+
+/* Texto "Próximamente" */
+.day-locked-text {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* Efecto de parpadeo para días disponibles - deshabilitado para mejor rendimiento */
+.day-available {
+    /* animation: availablePulse 2s ease-in-out infinite; */
+}
+
+/* Animación de entrada simplificada para mejor rendimiento */
+.day-card {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Efectos de farolillos chinos */
+.lantern {
+    animation: chinese-lantern 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px var(--chinese-gold));
+    transition: all 0.3s ease;
+}
+
+.lantern:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 25px var(--chinese-gold)) brightness(1.1);
+}
+
+/* Imágenes de cultura china */
+.culture-image {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: christmas-twinkle 2s ease-in-out infinite;
+}
+
+.culture-image:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 0 10px var(--chinese-gold)) brightness(1.2);
+    z-index: 10;
+    position: relative;
+}
+
+.culture-image:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.culture-image:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.culture-image:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.culture-image:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+/* Galería de cultura china */
+.gallery-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--shadow-light), transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+}
+
+.gallery-card:hover::before {
+    left: 100%;
+}
+
+.gallery-image {
+    transition: all 0.3s ease;
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.gallery-image:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) contrast(1.2) saturate(1.3);
+}
+
+/* Secciones con fondos espectaculares */
+.header-with-background {
+    position: relative;
+    overflow: hidden;
+}
+
+.header-with-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(220,20,60,0.3) 50%, rgba(0,0,0,0.4) 100%);
+    z-index: 1;
+}
+
+.header-with-background > * {
+    position: relative;
+    z-index: 2;
+}
+
+.culture-section,
+.christmas-section,
+.temple-section,
+.zodiac-section {
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.culture-section::before,
+.christmas-section::before,
+.temple-section::before,
+.zodiac-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(255,215,0,0.2) 50%, rgba(0,0,0,0.5) 100%);
+    z-index: 1;
+}
+
+.culture-section > *,
+.christmas-section > *,
+.temple-section > *,
+.zodiac-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Efectos de hover para las secciones */
+.culture-section:hover,
+.christmas-section:hover,
+.temple-section:hover,
+.zodiac-section:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.golden-glow {
+    animation: glow 2s ease-in-out infinite alternate, christmas-twinkle 3s ease-in-out infinite;
+    text-shadow: 0 0 20px var(--chinese-gold);
+}
+
+.red-pulse {
+    animation: pulse-red 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 15px var(--chinese-red);
+}
+
+/* Tarjetas chinas */
+.chinese-card {
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-gold);
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%);
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.chinese-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px var(--shadow-red);
+    border-color: var(--primary-red);
+}
+
+/* Botones chinos */
+.chinese-button {
+    background: linear-gradient(45deg, var(--primary-red), var(--primary-gold));
+    border: 2px solid var(--primary-gold);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(139, 0, 0, 0.3);
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+.chinese-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(139, 0, 0, 0.5);
+    background: linear-gradient(45deg, var(--primary-gold), var(--primary-red));
+}
+
+/* Enlaces */
+a {
+    color: var(--text-primary) !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-red) !important;
+    text-shadow: 0 0 5px var(--primary-gold);
+}
+
+/* Efectos de nieve */
+.snowflake {
+    color: var(--primary-gold);
+    text-shadow: 0 0 5px var(--primary-red);
+}
+
+/* Animación de entrada */
+.fade-in {
+    animation: fadeIn 0.8s ease-in;
+}
+
+/* Efecto de confeti */
+@keyframes confetti {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: var(--primary-gold);
+    animation: confetti 3s linear forwards;
+    z-index: 9999;
+}
+
+/* Efecto de nieve mejorado */
+.snowflake {
+    color: var(--chinese-gold);
+    text-shadow: 0 0 10px var(--chinese-gold);
+    animation: christmas-twinkle 2s ease-in-out infinite;
+}
+
+/* Efectos navideños adicionales */
+.christmas-sparkle {
+    animation: christmas-twinkle 1s ease-in-out infinite;
+}
+
+.chinese-lantern-glow {
+    animation: chinese-lantern 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px var(--chinese-gold));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .calendar-container {
+        padding: 10px;
+    }
+    
+    .day-card {
+        min-height: 80px;
+        max-height: 100px;
+        border-width: 2px;
+        /* Mejoras para animaciones móviles */
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .day-number {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+    
+    .day-icon {
+        font-size: 1em;
+    }
+    
+    .day-locked-text {
+        font-size: 0.6em;
+        padding: 2px 6px;
+    }
+    
+    .chinese-card {
+        padding: 15px;
+        margin: 8px 0;
+    }
+    
+    .chinese-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    
+    .day-card:hover {
+        transform: scale(1.02);
+    }
+    
+    .chinese-card:hover {
+        transform: translateY(-2px) scale(1.01);
+    }
+    
+    /* Efectos táctiles mejorados para móvil */
+    .day-card.available:active {
+        transform: scale(0.95) !important;
+        transition: transform 0.1s ease !important;
+    }
+    
+    .day-card.available:active::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        animation: ripple 0.6s ease-out;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    /* Mejoras de rendimiento para móvil */
+    .day-card {
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+    
+    /* Efectos de vibración */
+    .vibrate {
+        animation: vibrate 0.3s ease-in-out;
+    }
+    
+    @keyframes vibrate {
+        0%, 100% { transform: translate(0); }
+        25% { transform: translate(-2px, 2px); }
+        50% { transform: translate(2px, -2px); }
+        75% { transform: translate(-2px, -2px); }
+    }
+    
+    /* Mejorar navbar en móvil */
+    .nes-container {
+        padding: 10px !important;
+    }
+    
+    /* Mejorar header en móvil */
+    .lantern {
+        margin-bottom: 20px !important;
+    }
+    
+    /* Mejorar texto en móvil */
+    .chinese-text {
+        font-size: 1.5em !important;
+        line-height: 1.2 !important;
+    }
+    
+/* Mejorar espaciado en móvil */
+.vstack {
+    gap: 15px !important;
+}
+
+/* Header responsive mejorado */
+.header-flex {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/* Header layout mejorado para móvil */
+.header-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 2em 1em !important;
+}
+
+.header-image {
+    margin-bottom: 1.5em !important;
+}
+
+.header-text {
+    max-width: 90% !important;
+    margin: 0 auto !important;
+}
+
+/* Countdown más compacto en móvil */
+.countdown-container {
+    padding: 1em !important;
+}
+
+.countdown-hstack {
+    gap: 0.5em !important;
+}
+
+.countdown-box {
+    min-width: 50px !important;
+    padding: 0.5em !important;
+}
+
+.countdown-number {
+    font-size: 1.2em !important;
+}
+
+.countdown-label {
+    font-size: 0.6em !important;
+}
+
+/* Estilos para días bloqueados */
+.day-card.locked {
+    opacity: 0.4 !important;
+    filter: grayscale(70%) !important;
+    cursor: not-allowed !important;
+}
+
+.day-image-locked {
+    opacity: 0.3 !important;
+    filter: grayscale(100%) !important;
+}
+
+.day-number.locked {
+    color: #666 !important;
+}
+
+.day-icon.locked {
+    color: #666 !important;
+}
+
+.day-locked-text {
+    font-size: 0.7em !important;
+    color: #666 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}
+
+/* Días desbloqueados */
+.day-card.available {
+    opacity: 1 !important;
+    filter: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.day-card.available:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3) !important;
+}
+}
+
+@media (max-width: 480px) {
+    .day-card {
+        min-height: 70px;
+        max-height: 80px;
+    }
+    
+    .day-number {
+        padding: 3px 6px;
+        font-size: 0.7em;
+    }
+    
+    .day-icon {
+        font-size: 0.9em;
+    }
+    
+    .day-locked-text {
+        font-size: 0.5em;
+        padding: 1px 4px;
+    }
+    
+    /* Mejoras adicionales para móvil pequeño */
+    .chinese-text {
+        font-size: 1.2em !important;
+        text-align: center !important;
+    }
+    
+    .lantern {
+        width: 10em !important;
+        height: 10em !important;
+    }
+    
+    .nes-balloon {
+        font-size: 0.8em !important;
+        padding: 10px !important;
+    }
+}
+
+/* Chinese Lanterns Floating */
+@keyframes float-lanterns {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.floating-lanterns {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 500;
+}
+
+.lantern {
+    position: absolute;
+    font-size: 30px;
+    animation: float-lanterns 6s ease-in-out infinite;
+    opacity: 0.6;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.lantern:nth-child(1) { left: 10%; top: 15%; animation-delay: 0s; }
+.lantern:nth-child(2) { left: 30%; top: 25%; animation-delay: 2s; }
+.lantern:nth-child(3) { left: 50%; top: 35%; animation-delay: 4s; }
+.lantern:nth-child(4) { left: 70%; top: 45%; animation-delay: 1s; }
+.lantern:nth-child(5) { left: 90%; top: 55%; animation-delay: 3s; }
+
+/* Chinese Characters Floating */
+@keyframes float-characters {
+    0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+    50% { transform: translateY(-15px) scale(1.1); opacity: 0.6; }
+}
+
+.floating-characters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 400;
+}
+
+.chinese-char {
+    position: absolute;
+    font-size: 28px;
+    color: rgba(255, 215, 0, 0.5);
+    animation: float-characters 8s ease-in-out infinite;
+    font-family: 'Noto Sans SC', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.chinese-char:nth-child(1) { left: 15%; top: 20%; animation-delay: 0s; }
+.chinese-char:nth-child(2) { left: 25%; top: 40%; animation-delay: 2s; }
+.chinese-char:nth-child(3) { left: 75%; top: 30%; animation-delay: 4s; }
+.chinese-char:nth-child(4) { left: 85%; top: 60%; animation-delay: 1s; }
+
+/* More Snow Effect Enhanced */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #eee, transparent),
+        radial-gradient(1px 1px at 200px 20px, #fff, transparent),
+        radial-gradient(2px 2px at 250px 60px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 300px 10px, #eee, transparent);
+    background-repeat: repeat;
+    background-size: 350px 120px;
+    animation: snow-fall 20s linear infinite;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 30px 20px, #fff, transparent),
+        radial-gradient(1px 1px at 60px 50px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 120px 30px, #eee, transparent),
+        radial-gradient(1px 1px at 180px 70px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 220px 40px, #fff, transparent),
+        radial-gradient(2px 2px at 280px 20px, rgba(255,255,255,0.8), transparent);
+    background-repeat: repeat;
+    background-size: 320px 100px;
+    animation: snow-fall 25s linear infinite reverse;
+    pointer-events: none;
+    z-index: 1000;
+    
+    /* Mejorar flex en móvil */
+    .flex {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
+
+/* Utilidades */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+.p-5 { padding: 3rem; }
